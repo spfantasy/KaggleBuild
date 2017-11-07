@@ -39,7 +39,7 @@ class Modeling(object):
                 valid = dataset(pd.read_csv(path + "valid_X_" + str(i) + ".csv"),
                                 pd.read_csv(path + "valid_y_" + str(i) + ".csv"))
                 cv.append([train, valid])
-                print("cross validation set %d loaded" % i)
+                print("cross validation set %d loaded" %(i+1))
                 i += 1
             except:
                 return cv
@@ -52,7 +52,7 @@ class Modeling(object):
             cvresult = []
             cvlabels = []
             for i, data in enumerate(cv):
-                print("training CV round %d" % i)
+                print("training CV round %d" % (i+1))
                 v, t = func(data[0], data[1], test)
                 cvresult.append(v)
                 cvlabels.append(data[1].y["target"].as_matrix())
@@ -68,10 +68,13 @@ class Modeling(object):
                 i for validation_split in cvresult for i in validation_split]
             stage1labels["target"] = [
                 i for validation_split in cvlabels for i in validation_split]
+            stage1result.to_csv('./predictions/meta_train/%s.csv' %
+                          methodname, index=False, float_format='%.5f')
             score = eval_func(stage1labels.as_matrix(),
                               stage1result.as_matrix())
             print("[metacv@%s] cross validation score = %.4f" %
                   (methodname, score))
+
         return wrapper
 
     # I'm a decorator
@@ -103,6 +106,9 @@ class Modeling(object):
                 print("%10s : %s" % (key, str(val)))
         return wrapper
 
+    @staticmethod
+    def makeparams(params):
+        pass
     # because the return cv predictions are shuffled under validation sets
     # In X->predictions->y
     # stage2 preditions->y

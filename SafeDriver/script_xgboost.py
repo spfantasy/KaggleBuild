@@ -49,4 +49,4 @@ if __name__ == "__main__":
     cv = ML.loadcv(path)
     test = ML.loadtest(path)
 
-    metacv_xgb("xgboost", cv = cv, eval_func = EV.gini)
+    metacv_xgb("xgboost", cv = cv, test = test, eval_func = EV.gini)
