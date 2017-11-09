@@ -7,6 +7,7 @@ import warnings
 warnings.filterwarnings("ignore")
 import pandas as pd
 import numpy as np
+from copy import deepcopy
 
 
 class dataset:
@@ -47,13 +48,14 @@ class Modeling(object):
     # I'm a decorator
     @staticmethod
     def metacv(func):
-        def wrapper(methodname, cv, test, eval_func):
+        def wrapper(methodname, cv, test, param, eval_func):
             testresult = []
             cvresult = []
             cvlabels = []
             for i, data in enumerate(cv):
                 print("training CV round %d" % (i+1))
-                v, t = func(data[0], data[1], test)
+                #core wrapped
+                v, t = func(data[0], data[1], test, param)
                 cvresult.append(v)
                 cvlabels.append(data[1].y["target"].as_matrix())
                 testresult.append(t)
@@ -84,9 +86,10 @@ class Modeling(object):
             scores = []
             cvresult = []
             cvlabels = []
-            for idx, param in params:
+            for idx, param in enumerate(params):
                 print("testing parameter case %d/%d" % (idx + 1, len(params)))
                 for i, data in enumerate(cv):
+                    #core wrapped
                     v = func(data[0], data[1], param)
                     cvresult.append(v)
                     cvlabels.append(data[1].y["target"].as_matrix())
@@ -102,13 +105,36 @@ class Modeling(object):
             print("[gridsearchcv@%s] best cv score = %.4f" %
                   (methodname, scores[bestidx]))
             print("best params are:")
+            print('{')
             for key, val in params[bestidx].items():
-                print("%10s : %s" % (key, str(val)))
+                print("\t'%s' : %s," % (key, str(val)))
+            print('}')
         return wrapper
 
     @staticmethod
     def makeparams(params):
-        pass
+        keys = list(params)
+        ans = []
+        def dfs(remain, path):
+            if len(remain) == 0:
+                ans.append(path)
+            else:
+                key = remain[0]
+                choices = params[key]
+                if isinstance(choices, list):
+                    for choice in choices:
+                        thispath = deepcopy(path)
+                        if choice is not None:
+                            thispath[key] = choice
+                        dfs(remain[1:], thispath)
+                else:
+                    path[key] = choices
+                    dfs(remain[1:], path)
+            return
+
+        dfs(keys, {})
+        return ans
+
     # because the return cv predictions are shuffled under validation sets
     # In X->predictions->y
     # stage2 preditions->y

@@ -3,14 +3,10 @@ from __future__ import print_function
 from __future__ import division
 from __future__ import unicode_literals
 
+import sys
 import warnings
 warnings.filterwarnings("ignore")
-import numpy as np
-import pandas as pd
-from sklearn.model_selection import StratifiedKFold
 
-from modeling import dataset
-from preprocessing import Preprocessing as PP
 from modeling import Modeling as ML
 from evaluation import Evaluation as EV
 
@@ -21,19 +17,10 @@ def gini_xgb(pred, y):
     return 'gini', EV.gini(y, pred)
 
 @ML.metacv
-def metacv_xgb(train, valid, test):
-    params = {'eta': 0.02, 
-              'max_depth': 4, 
-              'subsample': 0.9, 
-              'colsample_bytree': 0.9, 
-              'objective': 'binary:logistic', 
-              'eval_metric': 'auc', 
-              'seed': 99, 
-              'silent': True
-             }    
+def metacv_xgb(train, valid, test, param):
     watchlist = [(xgb.DMatrix(train.X, train.y), 'train'), 
                 (xgb.DMatrix(valid.X, valid.y), 'valid')]
-    model = xgb.train(params, 
+    model = xgb.train(param, 
                         xgb.DMatrix(train.X, train.y), 
                         5000,  
                         watchlist, 
@@ -44,9 +31,48 @@ def metacv_xgb(train, valid, test):
     return (model.predict(xgb.DMatrix(valid.X), ntree_limit=model.best_ntree_limit+45)
             ,model.predict(xgb.DMatrix(test.X), ntree_limit=model.best_ntree_limit+45))
 
+@ML.gridsearchcv
+def gridsearchcv_lgbm(train, valid, param):
+    watchlist = [(xgb.DMatrix(train.X, train.y), 'train'), 
+                (xgb.DMatrix(valid.X, valid.y), 'valid')]
+    model = xgb.train(param, 
+                        xgb.DMatrix(train.X, train.y), 
+                        5000,  
+                        watchlist, 
+                        feval=gini_xgb, 
+                        maximize=True, 
+                        verbose_eval=50, 
+                        early_stopping_rounds=200)
+    return model.predict(xgb.DMatrix(valid.X), ntree_limit=model.best_ntree_limit+45)   
+
 if __name__ == "__main__":
+    mode = "Building..."
+    print('['+sys.argv[0].split('/')[-1]+']'+mode)
     path = "./cv/cv_"
     cv = ML.loadcv(path)
-    test = ML.loadtest(path)
-
-    metacv_xgb("xgboost", cv = cv, test = test, eval_func = EV.gini)
+    if mode == "Grid Searching...":
+        params = {'eta': 0.02, 
+                'max_depth': [4], 
+                'subsample': 0.9, 
+                'colsample_bytree': 0.9, 
+                'objective': 'binary:logistic', 
+                'eval_metric': 'auc', 
+                'seed': 99, 
+                'silent': True
+               }    
+        params = ML.makeparams(params)
+        gridsearchcv_xgb("xgboost", cv=cv, params=params, eval_func=EV.gini)
+    elif mode == "Building...":
+        param = {'eta': 0.02, 
+                'max_depth': 4, 
+                'subsample': 0.9, 
+                'colsample_bytree': 0.9, 
+                'objective': 'binary:logistic', 
+                'eval_metric': 'auc', 
+                'seed': 99, 
+                'silent': True
+               }  
+        test = ML.loadtest(path)
+        metacv_xgb("xgboost", cv = cv, test = test, param = param, eval_func = EV.gini)
+    else:
+        print("Wrong command")
