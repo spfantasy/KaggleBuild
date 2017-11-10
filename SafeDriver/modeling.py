@@ -141,15 +141,8 @@ class Modeling(object):
     # stage2 preditions->y
     # y need to be reorder as by cv[i][1].y(and index killed)
     @staticmethod
-    def stacking(meta_train, cv, meta_test, model):
-        meta_train_y = []
-        
-        meta_train_y = pd.concat(
-            meta_train_y, axis=0).reset_index(drop=True)
-        model.fit(meta_train, meta_train_y)
-        pred = pd.DataFrame()
-        pred['target'] = model.predict_proba(meta_test)[:, 1]
-        pred = pred.reset_index()
-        pred.columns = ['id', 'target']
-        pred.to_csv('./predictions/submission.csv',
+    def stacking(train, test, model):
+        model.fit(train.X, train.y)
+        test.y['target'] = model.predict_proba(test.X)[:, 1]
+        test.y.to_csv('./predictions/submission.csv',
                     index=False, float_format='%.5f')

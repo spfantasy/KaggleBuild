@@ -12,6 +12,7 @@ from os.path import join
 from modeling import Modeling as ML
 from evaluation import Evaluation as EV
 from modeling import dataset
+import pandas as pd
 
 from sklearn.linear_model import LogisticRegression as LR
 
@@ -41,4 +42,4 @@ if __name__ == "__main__":
     df.columns = filenamelist
     test = dataset(df, test.y)
     #####
-    ML.stacking(train, test, LR())
+    ML.stacking(train, test, LR())#class_weight= {0: 0.0364, 1: 0.9635}))
