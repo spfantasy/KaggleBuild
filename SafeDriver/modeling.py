@@ -40,7 +40,7 @@ class Modeling(object):
                 valid = dataset(pd.read_csv(path + "valid_X_" + str(i) + ".csv"),
                                 pd.read_csv(path + "valid_y_" + str(i) + ".csv"))
                 cv.append([train, valid])
-                print("cross validation set %d loaded" %(i+1))
+                print("cross validation set %d loaded" % (i + 1))
                 i += 1
             except:
                 return cv
@@ -53,8 +53,8 @@ class Modeling(object):
             cvresult = []
             cvlabels = []
             for i, data in enumerate(cv):
-                print("training CV round %d" % (i+1))
-                #core wrapped
+                print("training CV round %d" % (i + 1))
+                # core wrapped
                 v, t = func(data[0], data[1], test, param)
                 cvresult.append(v)
                 cvlabels.append(data[1].y["target"].as_matrix())
@@ -66,14 +66,14 @@ class Modeling(object):
             # saving validation results as stage1result
             stage1result = pd.DataFrame()
             stage1labels = pd.DataFrame()
-            stage1result[methodname] = [
+            stage1result["target"] = [
                 i for validation_split in cvresult for i in validation_split]
             stage1labels["target"] = [
                 i for validation_split in cvlabels for i in validation_split]
             stage1result.to_csv('./predictions/meta_train/%s.csv' %
-                          methodname, index=False, float_format='%.5f')
-            score = eval_func(stage1labels.as_matrix(),
-                              stage1result.as_matrix())
+                                methodname, index=False, float_format='%.5f')
+            score = eval_func(stage1labels['target'].as_matrix(),
+                              stage1result['target'].as_matrix())
             print("[metacv@%s] cross validation score = %.4f" %
                   (methodname, score))
 
@@ -89,7 +89,7 @@ class Modeling(object):
             for idx, param in enumerate(params):
                 print("testing parameter case %d/%d" % (idx + 1, len(params)))
                 for i, data in enumerate(cv):
-                    #core wrapped
+                    # core wrapped
                     v = func(data[0], data[1], param)
                     cvresult.append(v)
                     cvlabels.append(data[1].y["target"].as_matrix())
@@ -115,6 +115,7 @@ class Modeling(object):
     def makeparams(params):
         keys = list(params)
         ans = []
+
         def dfs(remain, path):
             if len(remain) == 0:
                 ans.append(path)
@@ -140,5 +141,15 @@ class Modeling(object):
     # stage2 preditions->y
     # y need to be reorder as by cv[i][1].y(and index killed)
     @staticmethod
-    def stacking():
-        pass
+    def stacking(meta_train, cv, meta_test, model):
+        meta_train_y = []
+        
+        meta_train_y = pd.concat(
+            meta_train_y, axis=0).reset_index(drop=True)
+        model.fit(meta_train, meta_train_y)
+        pred = pd.DataFrame()
+        pred['target'] = model.predict_proba(meta_test)[:, 1]
+        pred = pred.reset_index()
+        pred.columns = ['id', 'target']
+        pred.to_csv('./predictions/submission.csv',
+                    index=False, float_format='%.5f')
