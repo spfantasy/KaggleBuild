@@ -14,7 +14,7 @@ class Preprocessing(object):
     # in order to let all dummies have same number of catagories
     @staticmethod
     def makehead(df, mydummylist=None):
-        myheader = pd.DataFrame.copy(df.head(10))
+        myheader = pd.DataFrame.copy(df.head(200))
         if mydummylist is None:
             mydummylist = self.dummylist(pd.concat(df, axis=0))
         assert(isinstance(df, pd.core.frame.DataFrame))
@@ -22,7 +22,7 @@ class Preprocessing(object):
 
         for columnname in mydummylist:
             possible_val = list(df[columnname].unique())
-            assert(len(possible_val) < 10)
+            assert(len(possible_val) < 200)
             for i, val in enumerate(possible_val):
                 myheader[columnname][i] = val
         return myheader
@@ -34,10 +34,10 @@ class Preprocessing(object):
     @staticmethod
     def rmhead(df):
         # drop the header rows, ret_index to start from 0, and drop previous indexs(with offset)
-        return df.drop(range(10)).reset_index(drop=True)
+        return df.drop(range(200)).reset_index(drop=True)
 
     @staticmethod
-    def fillNA(df, param={'method': 'drop'}):
+    def fillNA(df, param={'method': 'fill-1'}):
         if param['method'] == 'fill-1':
             df = df.fillna(-1)
             return df, param
@@ -53,11 +53,11 @@ class Preprocessing(object):
             return df, param
 
     @staticmethod
-    def dummylist(df):
+    def dummylist(df, uplimit = 99999):
         assert(isinstance(df, pd.core.frame.DataFrame))
         dummylist = []
         for columnname in list(df.columns):
-            if columnname.endswith("cat") and len(list(df[columnname].unique())) < 10:
+            if columnname.endswith("cat") and len(list(df[columnname].unique())) < uplimit:#10
                 dummylist.append(columnname)
         return dummylist
 

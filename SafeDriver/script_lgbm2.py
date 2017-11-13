@@ -27,11 +27,12 @@ def gridsearchcv_lgbm(train, valid, param):
     return model.predict_proba(valid.X)[:,1] 
 
 if __name__ == "__main__":
-    mode = "Grid Searching..."
+    mode = "Building..."
+
     print('['+sys.argv[0].split('/')[-1]+']'+mode)
     path = "./cv/cv_"
     cv = ML.loadcv(path)
-    if mode == "Building...":
+    if mode == "Grid Searching...":
         params = {
                 'learning_rate' : 0.02,
                 'n_estimators' : [1090],
@@ -41,7 +42,7 @@ if __name__ == "__main__":
                 'seed' : 99,
                 }
         params = ML.makeparams(params)
-        gridsearchcv_lgbm("lightgbm1", cv=cv, params=params, eval_func=EV.gini)
+        gridsearchcv_lgbm("lightgbm2", cv=cv, params=params, eval_func=EV.gini)
     elif mode == "Building...":
         param = {
                 'learning_rate' : 0.02,
@@ -52,6 +53,6 @@ if __name__ == "__main__":
                 'seed' : 99,
                 }
         test = ML.loadtest(path)
-        metacv_lgbm("lightgbm1", cv=cv, test=test, param = param, eval_func=EV.gini)
+        metacv_lgbm("lightgbm2", cv=cv, test=test, param = param, eval_func=EV.gini)
     else:
         print("Wrong command")
