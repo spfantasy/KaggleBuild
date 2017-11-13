@@ -15,7 +15,7 @@ import xgboost as xgb
 def gini_xgb(pred, y):
     y = y.get_label()
     return 'gini', EV.gini(y, pred)
-
+# 100347139332
 @ML.metacv
 def metacv_xgb(train, valid, test, param):
     watchlist = [(xgb.DMatrix(train.X, train.y), 'train'), 

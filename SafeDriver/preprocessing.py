@@ -9,6 +9,7 @@ from modeling import dataset
 import pandas as pd
 import numpy as np
 
+
 class Preprocessing(object):
     # in order to let all dummies have same number of catagories
     @staticmethod
@@ -36,9 +37,19 @@ class Preprocessing(object):
         return df.drop(range(10)).reset_index(drop=True)
 
     @staticmethod
-    def fillNA(df, param=None):
-        if param is None:
+    def fillNA(df, param={'method': 'drop'}):
+        if param['method'] == 'fill-1':
             df = df.fillna(-1)
+            return df, param
+        elif param['method'] == 'drop':
+            if 'droplist' not in param:
+                droplist = []
+                for col in df.columns:
+                    if df[col].hasnans:
+                        droplist.append(col)
+                param['droplist'] = droplist
+            for col in param['droplist']:
+                df = df.drop(col, axis=1)
             return df, param
 
     @staticmethod

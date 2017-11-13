@@ -31,7 +31,7 @@ if __name__ == "__main__":
     print('['+sys.argv[0].split('/')[-1]+']'+mode)
     path = "./cv/cv_"
     cv = ML.loadcv(path)
-    if mode == "Grid Searching...":
+    if mode == "Building...":
         params = {
                 'learning_rate' : 0.02,
                 'n_estimators' : [1090],
