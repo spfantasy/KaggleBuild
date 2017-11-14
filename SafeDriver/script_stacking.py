@@ -42,4 +42,4 @@ if __name__ == "__main__":
     df.columns = filenamelist
     test = dataset(df, test.y)
     #####
-    ML.stacking(train, test, LR())#class_weight= {0: 0.0364, 1: 0.9635}))
+    ML.stacking(train, test, LR())

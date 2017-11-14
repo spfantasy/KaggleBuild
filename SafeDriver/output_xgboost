@@ -1,0 +1,192 @@
+/usr/local/lib/python2.7/dist-packages/sklearn/cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
+  "This module will be removed in 0.20.", DeprecationWarning)
+[script_xgboost.py]Building...
+cross validation set 1 loaded
+cross validation set 2 loaded
+cross validation set 3 loaded
+cross validation set 4 loaded
+cross validation set 5 loaded
+training CV round 1
+[0]	train-gini:0.200667	valid-gini:0.187099
+Multiple eval metrics have been passed: 'valid-gini' will be used for early stopping.
+
+Will train until valid-gini hasn't improved in 200 rounds.
+[50]	train-gini:0.241435	valid-gini:0.222105
+[100]	train-gini:0.248246	valid-gini:0.228458
+[150]	train-gini:0.262232	valid-gini:0.240451
+[200]	train-gini:0.277994	valid-gini:0.25121
+[250]	train-gini:0.290191	valid-gini:0.2589
+[300]	train-gini:0.298907	valid-gini:0.264637
+[350]	train-gini:0.305787	valid-gini:0.268384
+[400]	train-gini:0.312321	valid-gini:0.271186
+[450]	train-gini:0.31787	valid-gini:0.272513
+[500]	train-gini:0.322656	valid-gini:0.273478
+[550]	train-gini:0.327568	valid-gini:0.274681
+[600]	train-gini:0.331751	valid-gini:0.27521
+[650]	train-gini:0.335715	valid-gini:0.275882
+[700]	train-gini:0.339568	valid-gini:0.276769
+[750]	train-gini:0.343171	valid-gini:0.277002
+[800]	train-gini:0.346891	valid-gini:0.277475
+[850]	train-gini:0.349888	valid-gini:0.277828
+[900]	train-gini:0.353141	valid-gini:0.278439
+[950]	train-gini:0.356543	valid-gini:0.278839
+[1000]	train-gini:0.359625	valid-gini:0.278811
+[1050]	train-gini:0.362517	valid-gini:0.279052
+[1100]	train-gini:0.365404	valid-gini:0.279226
+[1150]	train-gini:0.368386	valid-gini:0.279133
+[1200]	train-gini:0.371335	valid-gini:0.279151
+[1250]	train-gini:0.374274	valid-gini:0.279132
+[1300]	train-gini:0.377033	valid-gini:0.279219
+[1350]	train-gini:0.380032	valid-gini:0.27935
+[1400]	train-gini:0.382735	valid-gini:0.27912
+[1450]	train-gini:0.38528	valid-gini:0.2789
+[1500]	train-gini:0.387789	valid-gini:0.278653
+Stopping. Best iteration:
+[1348]	train-gini:0.379963	valid-gini:0.279373
+
+training CV round 2
+[0]	train-gini:0.196857	valid-gini:0.19354
+Multiple eval metrics have been passed: 'valid-gini' will be used for early stopping.
+
+Will train until valid-gini hasn't improved in 200 rounds.
+[50]	train-gini:0.241649	valid-gini:0.23639
+[100]	train-gini:0.249241	valid-gini:0.241029
+[150]	train-gini:0.264869	valid-gini:0.250963
+[200]	train-gini:0.278647	valid-gini:0.258851
+[250]	train-gini:0.290452	valid-gini:0.265222
+[300]	train-gini:0.300323	valid-gini:0.268897
+[350]	train-gini:0.307513	valid-gini:0.271614
+[400]	train-gini:0.313618	valid-gini:0.273821
+[450]	train-gini:0.318857	valid-gini:0.275069
+[500]	train-gini:0.323076	valid-gini:0.275867
+[550]	train-gini:0.327102	valid-gini:0.276584
+[600]	train-gini:0.330974	valid-gini:0.277375
+[650]	train-gini:0.334605	valid-gini:0.277678
+[700]	train-gini:0.338529	valid-gini:0.277773
+[750]	train-gini:0.342	valid-gini:0.278125
+[800]	train-gini:0.345798	valid-gini:0.278371
+[850]	train-gini:0.349131	valid-gini:0.278594
+[900]	train-gini:0.352051	valid-gini:0.278926
+[950]	train-gini:0.355269	valid-gini:0.279179
+[1000]	train-gini:0.358546	valid-gini:0.279685
+[1050]	train-gini:0.361456	valid-gini:0.279747
+[1100]	train-gini:0.36425	valid-gini:0.280147
+[1150]	train-gini:0.367111	valid-gini:0.280335
+[1200]	train-gini:0.370094	valid-gini:0.280557
+[1250]	train-gini:0.372881	valid-gini:0.280224
+[1300]	train-gini:0.3758	valid-gini:0.280209
+[1350]	train-gini:0.378348	valid-gini:0.280009
+[1400]	train-gini:0.380862	valid-gini:0.279724
+Stopping. Best iteration:
+[1212]	train-gini:0.370819	valid-gini:0.280614
+
+training CV round 3
+[0]	train-gini:0.201549	valid-gini:0.190048
+Multiple eval metrics have been passed: 'valid-gini' will be used for early stopping.
+
+Will train until valid-gini hasn't improved in 200 rounds.
+[50]	train-gini:0.241465	valid-gini:0.233104
+[100]	train-gini:0.247723	valid-gini:0.238841
+[150]	train-gini:0.259797	valid-gini:0.249962
+[200]	train-gini:0.274975	valid-gini:0.261908
+[250]	train-gini:0.287332	valid-gini:0.271056
+[300]	train-gini:0.295731	valid-gini:0.276505
+[350]	train-gini:0.303475	valid-gini:0.280665
+[400]	train-gini:0.309582	valid-gini:0.283173
+[450]	train-gini:0.315231	valid-gini:0.28443
+[500]	train-gini:0.320403	valid-gini:0.285617
+[550]	train-gini:0.325231	valid-gini:0.286514
+[600]	train-gini:0.329774	valid-gini:0.287023
+[650]	train-gini:0.333522	valid-gini:0.287097
+[700]	train-gini:0.336934	valid-gini:0.28716
+[750]	train-gini:0.340532	valid-gini:0.287465
+[800]	train-gini:0.343836	valid-gini:0.288138
+[850]	train-gini:0.347111	valid-gini:0.288281
+[900]	train-gini:0.350365	valid-gini:0.288254
+[950]	train-gini:0.353354	valid-gini:0.288365
+[1000]	train-gini:0.356604	valid-gini:0.288563
+[1050]	train-gini:0.3595	valid-gini:0.288365
+[1100]	train-gini:0.362537	valid-gini:0.288455
+[1150]	train-gini:0.365392	valid-gini:0.288632
+[1200]	train-gini:0.368057	valid-gini:0.288673
+[1250]	train-gini:0.370635	valid-gini:0.288804
+[1300]	train-gini:0.373072	valid-gini:0.288914
+[1350]	train-gini:0.376099	valid-gini:0.288734
+[1400]	train-gini:0.378524	valid-gini:0.288534
+[1450]	train-gini:0.381316	valid-gini:0.288428
+[1500]	train-gini:0.384026	valid-gini:0.288371
+Stopping. Best iteration:
+[1312]	train-gini:0.373892	valid-gini:0.288997
+
+training CV round 4
+[0]	train-gini:0.199672	valid-gini:0.209873
+Multiple eval metrics have been passed: 'valid-gini' will be used for early stopping.
+
+Will train until valid-gini hasn't improved in 200 rounds.
+[50]	train-gini:0.2406	valid-gini:0.240807
+[100]	train-gini:0.246572	valid-gini:0.244715
+[150]	train-gini:0.259186	valid-gini:0.256008
+[200]	train-gini:0.275888	valid-gini:0.268895
+[250]	train-gini:0.286246	valid-gini:0.276572
+[300]	train-gini:0.296179	valid-gini:0.283047
+[350]	train-gini:0.303244	valid-gini:0.286408
+[400]	train-gini:0.309709	valid-gini:0.288781
+[450]	train-gini:0.315152	valid-gini:0.290741
+[500]	train-gini:0.31952	valid-gini:0.291684
+[550]	train-gini:0.323693	valid-gini:0.292355
+[600]	train-gini:0.327978	valid-gini:0.292892
+[650]	train-gini:0.332172	valid-gini:0.293272
+[700]	train-gini:0.335886	valid-gini:0.293688
+[750]	train-gini:0.339571	valid-gini:0.294209
+[800]	train-gini:0.342995	valid-gini:0.294625
+[850]	train-gini:0.346483	valid-gini:0.294843
+[900]	train-gini:0.350033	valid-gini:0.294713
+[950]	train-gini:0.353445	valid-gini:0.294632
+[1000]	train-gini:0.356659	valid-gini:0.294531
+Stopping. Best iteration:
+[838]	train-gini:0.345652	valid-gini:0.294939
+
+training CV round 5
+[0]	train-gini:0.203214	valid-gini:0.184303
+Multiple eval metrics have been passed: 'valid-gini' will be used for early stopping.
+
+Will train until valid-gini hasn't improved in 200 rounds.
+[50]	train-gini:0.2408	valid-gini:0.224874
+[100]	train-gini:0.25045	valid-gini:0.231778
+[150]	train-gini:0.262884	valid-gini:0.241344
+[200]	train-gini:0.278168	valid-gini:0.252679
+[250]	train-gini:0.289476	valid-gini:0.261089
+[300]	train-gini:0.29717	valid-gini:0.266153
+[350]	train-gini:0.30373	valid-gini:0.269591
+[400]	train-gini:0.309728	valid-gini:0.273164
+[450]	train-gini:0.315363	valid-gini:0.275465
+[500]	train-gini:0.32045	valid-gini:0.277573
+[550]	train-gini:0.325142	valid-gini:0.278926
+[600]	train-gini:0.32913	valid-gini:0.279995
+[650]	train-gini:0.333194	valid-gini:0.281003
+[700]	train-gini:0.337251	valid-gini:0.281917
+[750]	train-gini:0.340846	valid-gini:0.282589
+[800]	train-gini:0.34453	valid-gini:0.283339
+[850]	train-gini:0.347951	valid-gini:0.283473
+[900]	train-gini:0.351029	valid-gini:0.283443
+[950]	train-gini:0.354122	valid-gini:0.283636
+[1000]	train-gini:0.357451	valid-gini:0.283947
+[1050]	train-gini:0.360791	valid-gini:0.284551
+[1100]	train-gini:0.363871	valid-gini:0.28483
+[1150]	train-gini:0.366487	valid-gini:0.28492
+[1200]	train-gini:0.369372	valid-gini:0.284887
+[1250]	train-gini:0.372524	valid-gini:0.285196
+[1300]	train-gini:0.375257	valid-gini:0.285362
+[1350]	train-gini:0.378133	valid-gini:0.285377
+[1400]	train-gini:0.380935	valid-gini:0.285647
+[1450]	train-gini:0.383962	valid-gini:0.285652
+[1500]	train-gini:0.386726	valid-gini:0.285788
+[1550]	train-gini:0.389542	valid-gini:0.286072
+[1600]	train-gini:0.392083	valid-gini:0.286096
+[1650]	train-gini:0.394636	valid-gini:0.286009
+[1700]	train-gini:0.397389	valid-gini:0.28592
+[1750]	train-gini:0.400039	valid-gini:0.28579
+Stopping. Best iteration:
+[1570]	train-gini:0.39059	valid-gini:0.286137
+
+[metacv@xgboost] cross validation score = 0.2856

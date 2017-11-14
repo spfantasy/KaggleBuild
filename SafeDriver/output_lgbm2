@@ -1,0 +1,12 @@
+[script_lgbm2.py]Building...
+cross validation set 1 loaded
+cross validation set 2 loaded
+cross validation set 3 loaded
+cross validation set 4 loaded
+cross validation set 5 loaded
+training CV round 1
+training CV round 2
+training CV round 3
+training CV round 4
+training CV round 5
+[metacv@lightgbm2] cross validation score = 0.2854
