@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 
 import warnings
 warnings.filterwarnings("ignore")
+import time
 import pandas as pd
 import numpy as np
 from copy import deepcopy
@@ -53,7 +54,7 @@ class Modeling(object):
             cvresult = []
             cvlabels = []
             for i, data in enumerate(cv):
-                print("training CV round %d" % (i + 1))
+                print("training CV round %d[%s]" % ((i + 1),time.asctime( time.localtime(time.time()))))
                 # core wrapped
                 v, t = func(data[0], data[1], test, param)
                 cvresult.append(v)
@@ -74,8 +75,8 @@ class Modeling(object):
                                 methodname, index=False, float_format='%.5f')
             score = eval_func(stage1labels['target'].as_matrix(),
                               stage1result['target'].as_matrix())
-            print("[metacv@%s] cross validation score = %.4f" %
-                  (methodname, score))
+            print("[metacv@%s] cross validation score = %.4f[%s]" %
+                  (methodname, score, time.asctime( time.localtime(time.time()))))
 
         return wrapper
 
@@ -87,7 +88,7 @@ class Modeling(object):
             cvresult = []
             cvlabels = []
             for idx, param in enumerate(params):
-                print("testing parameter case %d/%d" % (idx + 1, len(params)))
+                print("testing parameter case %d/%d[%s]" % (idx + 1, len(params), time.asctime( time.localtime(time.time()))))
                 for i, data in enumerate(cv):
                     # core wrapped
                     v = func(data[0], data[1], param)
@@ -102,13 +103,13 @@ class Modeling(object):
                                   stage1result)
                 scores.append(score)
             bestidx = scores.index(max(scores))
-            print("[gridsearchcv@%s] best cv score = %.4f" %
-                  (methodname, scores[bestidx]))
             print("best params are:")
             print('{')
             for key, val in params[bestidx].items():
                 print("\t'%s' : %s," % (key, str(val)))
             print('}')
+            print("[gridsearchcv@%s] best cv score = %.4f[%s]" %
+                  (methodname, scores[bestidx]),time.asctime( time.localtime(time.time())))
         return wrapper
 
     @staticmethod

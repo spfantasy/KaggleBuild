@@ -37,7 +37,7 @@ class Preprocessing(object):
         return df.drop(range(200)).reset_index(drop=True)
 
     @staticmethod
-    def fillNA(df, param={'method': 'fill-1'}):
+    def fillNA(df, param={'method': 'mean-1'}):
         if param['method'] == 'fill-1':
             df = df.fillna(-1)
             return df, param
@@ -51,6 +51,18 @@ class Preprocessing(object):
             for col in param['droplist']:
                 df = df.drop(col, axis=1)
             return df, param
+        elif param['method'] == 'mean-1':
+            #fill catagory and binary with -1
+            #fill other with mean
+            for col in df.columns:
+                if col.endswith('cat') or col.endswith('bin'):
+                    df[col] = df[col].fillna(-1)
+            if 'mean' not in param:
+                param['mean'] = df.mean()
+            df = df.fillna(param['mean'])
+            return df, param
+        else:
+            raise KeyError("wrong method provided")
 
     @staticmethod
     def dummylist(df, uplimit = 99999):
@@ -73,6 +85,23 @@ class Preprocessing(object):
         return df
 
     @staticmethod
-    def standardize(df, param=None):
-        # unfinished
-        return df, param
+    def standardize(df, param={'method':'minmax'}):
+        if param['method'] == 'minmax':
+            if not 'min' in param or not 'max' in param:
+                param['min'] = {}
+                param['max'] = {}
+                for col in df.columns:
+                    if not col.endswith('bin') and not col.startswith('1hot'):
+                        param['min'][col] = df[col].min()
+                        param['max'][col] = df[col].max()
+            for col in df.columns:
+                if not col.endswith('bin') and not col.startswith('1hot'):
+                    df[col] = (df[col]-param['min'][col])/(param['max'][col]-param['min'][col])
+            return df, param
+        elif param['method'] == 'meanstd':
+            if not 'mean' in param or not 'std' in param:
+                param['mean'] = df.mean()
+                param['std'] = df.std()
+            return (df-param['mean'])/param['std'], param
+        else:
+            return df, param
