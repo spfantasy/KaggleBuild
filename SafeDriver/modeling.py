@@ -109,7 +109,7 @@ class Modeling(object):
                 print("\t'%s' : %s," % (key, str(val)))
             print('}')
             print("[gridsearchcv@%s] best cv score = %.4f[%s]" %
-                  (methodname, scores[bestidx]),time.asctime( time.localtime(time.time())))
+                  (methodname, scores[bestidx] ,time.asctime( time.localtime(time.time()))))
         return wrapper
 
     @staticmethod

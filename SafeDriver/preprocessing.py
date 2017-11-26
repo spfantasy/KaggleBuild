@@ -37,6 +37,15 @@ class Preprocessing(object):
         return df.drop(range(200)).reset_index(drop=True)
 
     @staticmethod
+    def RMOutliers(df):
+        # df.y = df.y[df.X['ps_car_12']<1.2]
+        df.y = df.y[df.X['ps_car_12']>-.5]
+        # df.X = df.X[df.X['ps_car_12']<1.2]
+        df.X = df.X[df.X['ps_car_12']>-.5]
+        df.y['target'] = df.y['target'].astype(np.int64)
+        return df
+
+    @staticmethod
     def fillNA(df, param={'method': 'mean-1'}):
         if param['method'] == 'fill-1':
             df = df.fillna(-1)
@@ -63,6 +72,54 @@ class Preprocessing(object):
             return df, param
         else:
             raise KeyError("wrong method provided")
+
+    @staticmethod
+    def encoding(Dset, encoding_lst, keep_original = False,
+                param = {'min_samples_leaf' : 200,
+                        'smoothing' : 10,
+                        'noise_level' : 0}):
+        """
+        implementation of Empirical Bayesian Encoding
+        https://kaggle2.blob.core.windows.net/forum-message-attachments/225952/7441/high%20cardinality%20categoricals.pdf
+        modified from https://www.kaggle.com/aharless/xgboost-cv-lb-284
+        """
+        def add_noise(series, noise_level):
+            return series * (1 + noise_level * np.random.randn(len(series)))
+        if 'average' not in param or 'prior' not in param:
+            target = Dset.y
+            if isinstance(target, pd.core.frame.DataFrame):
+                target = target['target']
+            min_samples_leaf = param['min_samples_leaf'] 
+            smoothing = param['smoothing']
+            # Apply average function to all target data
+            param['target_name'] = target.name
+            param['prior'] = target.mean()
+            param['average'] = {}
+            for col in encoding_lst:
+                selected_series = Dset.X[col]
+                assert len(selected_series) == len(target)
+                temp = pd.concat([selected_series, target], axis=1)
+                # Compute target mean
+                averages = temp.groupby(by=selected_series.name)[param['target_name']].agg(["mean", "count"])
+                # Compute smoothing
+                smoothing = 1 / (1 + np.exp(-(averages["count"] - min_samples_leaf) / smoothing))
+                # The bigger the count the less full_avg is taken into account
+                averages[param['target_name']] = param['prior'] * (1 - smoothing) + averages["mean"] * smoothing
+                averages.drop(["mean", "count"], axis=1, inplace=True)
+                param['average'][col] = averages
+        for col in encoding_lst:
+            selected_series = Dset.X[col]
+            # Apply averages to series
+            ft_selected_series = pd.merge(
+                selected_series.to_frame(selected_series.name),
+                param['average'][col].reset_index().rename(columns={'index': param['target_name'], param['target_name']: 'average'}),
+                on=selected_series.name,
+                how='left')['average'].rename(selected_series.name + '_mean').fillna(param['prior'])
+            ft_selected_series.index = selected_series.index
+            Dset.X[col+'_avg'] = add_noise(ft_selected_series, param['noise_level'])
+            if not keep_original:
+                Dset.X.drop([col], axis=1, inplace=True)
+        return Dset.X, param
 
     @staticmethod
     def dummylist(df, uplimit = 99999):

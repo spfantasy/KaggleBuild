@@ -62,18 +62,18 @@ if __name__ == "__main__":
                 'silent': True
                }    
         params = ML.makeparams(params)
-        gridsearchcv_xgb("xgboost", cv=cv, params=params, eval_func=EV.gini)
+        gridsearchcv_xgb("xgboost1", cv=cv, params=params, eval_func=EV.gini)
     elif mode == "Building...":
         param = {'eta': 0.02, 
                 'max_depth': 4, 
                 'subsample': 0.9, 
-                'colsample_bytree': 0.9, 
+                'colsample_bytree': 0.9,
                 'objective': 'binary:logistic', 
                 'eval_metric': 'auc', 
                 'seed': 99, 
                 'silent': True
                }  
         test = ML.loadtest(path)
-        metacv_xgb("xgboost", cv = cv, test = test, param = param, eval_func = EV.gini)
+        metacv_xgb("xgboost1", cv = cv, test = test, param = param, eval_func = EV.gini)
     else:
         print("Wrong command")

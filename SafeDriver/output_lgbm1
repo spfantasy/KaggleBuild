@@ -1,2 +1,19 @@
-
-[metacv@lightgbm1] cross validation score = 0.2881[Mon Nov 20 01:28:18 2017]
+[script_lgbm1.py]Building...
+cross validation set 1 loaded
+cross validation set 2 loaded
+cross validation set 3 loaded
+cross validation set 4 loaded
+cross validation set 5 loaded
+training CV round 1[Fri Nov 24 10:59:05 2017]
+Traceback (most recent call last):
+  File "script_lgbm1.py", line 60, in <module>
+    metacv_lgbm("lightgbm1", cv=cv, test=test, param = param, eval_func=EV.gini)
+  File "/home/shihao/KaggleBuild/SafeDriver/modeling.py", line 59, in wrapper
+    v, t = func(data[0], data[1], test, param)
+  File "script_lgbm1.py", line 19, in metacv_lgbm
+    model.fit(train.X, train.y)
+  File "/usr/local/lib/python2.7/dist-packages/lightgbm/sklearn.py", line 630, in fit
+    _LGBMCheckClassificationTargets(y)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/utils/multiclass.py", line 172, in check_classification_targets
+    raise ValueError("Unknown label type: %r" % y_type)
+ValueError: Unknown label type: 'continuous'

@@ -28,17 +28,17 @@ def gridsearchcv_rf(train, valid, param):
 
 
 if __name__ == "__main__":
-    mode = "Building..."
+    mode = "Grid Searching..."
     print('[' + sys.argv[0].split('/')[-1] + ']' + mode)
     path = "./cv/cv_"
     cv = ML.loadcv(path)
     if mode == "Grid Searching...":
-        params = {'n_estimators': [150],
+        params = {'n_estimators': [200,250,300],
                   'criterion': 'gini',
                   'max_features': 'log2',
-                  'max_depth': [9],
-                  'min_samples_split': [100],
-                  'min_samples_leaf': [30],
+                  'max_depth': 9,#[6,9,15],
+                  'min_samples_split': 75,#[60,75,100],
+                  'min_samples_leaf': 21,#[15,21,35],
                   'n_jobs': -1,
                   'bootstrap': True,
                   'oob_score': True,

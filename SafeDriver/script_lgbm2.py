@@ -27,7 +27,7 @@ def gridsearchcv_lgbm(train, valid, param):
     return model.predict_proba(valid.X)[:,1] 
 
 if __name__ == "__main__":
-    mode = "Building..."
+    mode = "Grid Searching..."#"Building..."#
 
     print('['+sys.argv[0].split('/')[-1]+']'+mode)
     path = "./cv/cv_"
@@ -35,7 +35,7 @@ if __name__ == "__main__":
     if mode == "Grid Searching...":
         params = {
                 'learning_rate' : 0.02,
-                'n_estimators' : [1090],
+                'n_estimators' : [800,900,1000,1090,1100,1200,1300,1400],
                 'subsample' : 0.7,
                 'subsample_freq' : 2,
                 'num_leaves' : 16,

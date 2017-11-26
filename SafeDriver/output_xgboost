@@ -1,2 +1,26 @@
-
-[metacv@xgboost] cross validation score = 0.2866[Mon Nov 20 01:24:47 2017]
+/usr/local/lib/python2.7/dist-packages/sklearn/cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
+  "This module will be removed in 0.20.", DeprecationWarning)
+[script_xgboost.py]Building...
+cross validation set 1 loaded
+cross validation set 2 loaded
+cross validation set 3 loaded
+cross validation set 4 loaded
+cross validation set 5 loaded
+training CV round 1[Fri Nov 24 10:58:44 2017]
+[10:58:45] dmlc-core/include/dmlc/logging.h:235: [10:58:45] src/objective/regression_obj.cc:108: label must be in [0,1] for logistic regression
+Traceback (most recent call last):
+  File "script_xgboost.py", line 77, in <module>
+    metacv_xgb("xgboost", cv = cv, test = test, param = param, eval_func = EV.gini)
+  File "/home/shihao/KaggleBuild/SafeDriver/modeling.py", line 59, in wrapper
+    v, t = func(data[0], data[1], test, param)
+  File "script_xgboost.py", line 30, in metacv_xgb
+    early_stopping_rounds=200)
+  File "/usr/local/lib/python2.7/dist-packages/xgboost/training.py", line 205, in train
+    xgb_model=xgb_model, callbacks=callbacks)
+  File "/usr/local/lib/python2.7/dist-packages/xgboost/training.py", line 76, in _train_internal
+    bst.update(dtrain, i, obj)
+  File "/usr/local/lib/python2.7/dist-packages/xgboost/core.py", line 806, in update
+    _check_call(_LIB.XGBoosterUpdateOneIter(self.handle, iteration, dtrain.handle))
+  File "/usr/local/lib/python2.7/dist-packages/xgboost/core.py", line 127, in _check_call
+    raise XGBoostError(_LIB.XGBGetLastError())
+xgboost.core.XGBoostError: [10:58:45] src/objective/regression_obj.cc:108: label must be in [0,1] for logistic regression

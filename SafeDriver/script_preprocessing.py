@@ -14,10 +14,14 @@ from preprocessing import Preprocessing as PP
 
 def firststeps(df, param = None):
     def addcolumns(df):
-        df['ps_c13*ps_r03'] = df['ps_car_13'] * df['ps_reg_03']
-        df['missing_vals'] = np.sum((df==np.nan).values, axis=1)
+        # df['ps_c13*ps_r03'] = df['ps_car_13'] * df['ps_reg_03']
+        # df['missing_vals'] = np.sum((df==np.nan).values, axis=1)
+
+        # df['ps_car_13_sq2'] = df['ps_car_13'] * df['ps_car_13']
+        # df['ps_reg_03_sq2'] = df['ps_reg_03'] * df['ps_reg_03']
         return df
     def selectfeatures(df):
+        #feature shadowing from Oliver
         train_features = [
             "ps_car_13",  #            : 1571.65 / shadow  609.23
             "ps_reg_03",  #            : 1408.42 / shadow  511.15
@@ -56,12 +60,12 @@ def firststeps(df, param = None):
             "ps_car_11_cat",
         ]
         return df[train_features]
-    df = addcolumns(df)
     df = selectfeatures(df)
+    df = addcolumns(df)
     return df
 
 
-def PreprocessOriginalData(train, test):
+def PreprocessOriginalData(train, test, filename):
     # preprocessing training/testing
     print("preprocessing on whole training/testing set")
     # deepcopy the train/test set to preprocess
@@ -75,6 +79,11 @@ def PreprocessOriginalData(train, test):
     # fillNA
     train.X, NAmethod = PP.fillNA(train.X)
     test.X, _ = PP.fillNA(test.X, NAmethod)
+    # Empirical Bayesian Encoding
+    encoding_lst = [col for col in train.X.columns if col.endswith('cat') 
+                    and len(pd.concat([train.X, test.X])[col].unique()) >= 10]
+    train.X, Encodingmethod = PP.encoding(train, encoding_lst)
+    test.X, _ = PP.encoding(test, encoding_lst, param = Encodingmethod)
     if True:
         # set down which list need 2b dummied
         mydummylist = PP.dummylist(
@@ -99,21 +108,25 @@ def PreprocessOriginalData(train, test):
                   index=False, float_format="%.5f")
     test.y.to_csv(filename + "test_y.csv",
                   index=False, float_format="%.5f")
-    return mydummylist, myheader
+    return mydummylist, myheader, encoding_lst
 
-def KFoldsPreprocess(train, test, mydummylist, myheader):
+def KFoldsPreprocess(train, test, mydummylist, myheader, encoding_lst, KFOLDS, filename):
+    folds = list(StratifiedKFold(n_splits=KFOLDS, shuffle=True,
+                             random_state=10086).split(train.X, train.y))
     # do methods in preprocessing in each fold
     for i, (train_idx, valid_idx) in enumerate(folds):
         print("preprocessing on cv #%d" % i)
         train_this_cut = dataset(
-            train.X.loc[train_idx], train.y.loc[train_idx])
+            train.X.iloc[train_idx], train.y.iloc[train_idx])
         valid_this_cut = dataset(
-            train.X.loc[valid_idx], train.y.loc[valid_idx])
+            train.X.iloc[valid_idx], train.y.iloc[valid_idx])
         # feature engineering
         train_this_cut.X = firststeps(train_this_cut.X)
         valid_this_cut.X = firststeps(valid_this_cut.X)
         # fillNA
         train_this_cut.X, NAmethod = PP.fillNA(train_this_cut.X)
+        # Empirical Bayesian Encoding
+        train_this_cut.X, Encodingmethod = PP.encoding(train_this_cut, encoding_lst)
         train_this_cut.X = PP.dummy(
             PP.addhead(train_this_cut.X, myheader), mydummylist)
         train_this_cut.X = PP.rmhead(train_this_cut.X)
@@ -121,6 +134,7 @@ def KFoldsPreprocess(train, test, mydummylist, myheader):
             train_this_cut.X)
         valid_this_cut.X, _ = PP.fillNA(
             valid_this_cut.X, NAmethod)
+        valid_this_cut.X, _ = PP.encoding(valid_this_cut, encoding_lst, param = Encodingmethod)
         valid_this_cut.X = PP.dummy(
             PP.addhead(valid_this_cut.X, myheader), mydummylist)
         valid_this_cut.X = PP.rmhead(valid_this_cut.X)
@@ -151,9 +165,9 @@ if __name__ == "__main__":
     # -1 are actually NaN
     train.X = train.X.replace(-1, np.nan)
     test.X = test .X.replace(-1, np.nan)
+    # rm outliers
+    # train = PP.RMOutliers(train)
     # do K-fold splitting
     KFOLDS = 5
-    folds = list(StratifiedKFold(n_splits=KFOLDS, shuffle=True,
-                                 random_state=10086).split(train.X, train.y))
-    mydummylist, myheader = PreprocessOriginalData(train, test)
-    KFoldsPreprocess(train, test, mydummylist, myheader)
+    mydummylist, myheader, encoding_lst = PreprocessOriginalData(train, test, filename = filename)
+    KFoldsPreprocess(train, test, mydummylist, myheader, encoding_lst, KFOLDS, filename = filename)
