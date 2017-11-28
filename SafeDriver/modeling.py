@@ -85,10 +85,10 @@ class Modeling(object):
     def gridsearchcv(func):
         def wrapper(methodname, cv, params, eval_func):
             scores = []
-            cvresult = []
-            cvlabels = []
             for idx, param in enumerate(params):
                 print("testing parameter case %d/%d[%s]" % (idx + 1, len(params), time.asctime( time.localtime(time.time()))))
+                cvresult = []
+                cvlabels = []
                 for i, data in enumerate(cv):
                     # core wrapped
                     v = func(data[0], data[1], param)

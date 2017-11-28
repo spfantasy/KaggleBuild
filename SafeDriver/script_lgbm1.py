@@ -27,7 +27,7 @@ def gridsearchcv_lgbm(train, valid, param):
     return model.predict_proba(valid.X)[:,1]
 
 if __name__ == "__main__":
-    mode = "Building..."
+    mode = "Grid Searching..."#"Building..."#
     
     print('['+sys.argv[0].split('/')[-1]+']'+mode)
     path = "./cv/cv_"
@@ -35,12 +35,12 @@ if __name__ == "__main__":
     if mode == "Grid Searching...":
         params = {
             'learning_rate' : 0.02,
-            'n_estimators' : [650],
-            'max_bin' : 10,
-            'subsample' : 0.8,
-            'subsample_freq' : 10,
-            'colsample_bytree' : 0.8,
-            'min_child_samples' : 500,
+            'n_estimators' : 650,#
+            'max_bin' : 10,#
+            'subsample' : 0.8,#
+            'subsample_freq' : [1,4,7,10,13],#
+            'colsample_bytree' : 0.8,#
+            'min_child_samples' : 700,
             'seed' : 99,
             }
         params = ML.makeparams(params)
@@ -51,9 +51,9 @@ if __name__ == "__main__":
             'n_estimators' : 650,
             'max_bin' : 10,
             'subsample' : 0.8,
-            'subsample_freq' : 10,
+            'subsample_freq' : 4,
             'colsample_bytree' : 0.8,
-            'min_child_samples' : 500,
+            'min_child_samples' : 700,
             'seed' : 99,
             }
         test = ML.loadtest(path)

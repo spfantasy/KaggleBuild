@@ -27,7 +27,7 @@ def gridsearchcv_lgbm(train, valid, param):
     return model.predict_proba(valid.X)[:,1] 
 
 if __name__ == "__main__":
-    mode = "Grid Searching..."#"Building..."#
+    mode = "Building..."#"Grid Searching..."#
 
     print('['+sys.argv[0].split('/')[-1]+']'+mode)
     path = "./cv/cv_"
@@ -35,22 +35,24 @@ if __name__ == "__main__":
     if mode == "Grid Searching...":
         params = {
                 'learning_rate' : 0.02,
-                'n_estimators' : [800,900,1000,1090,1100,1200,1300,1400],
-                'subsample' : 0.7,
-                'subsample_freq' : 2,
-                'num_leaves' : 16,
+                'n_estimators' : 1000,#
+                'subsample' : 0.7,#
+                'subsample_freq' : [1],
+                'num_leaves' : 18,#
                 'seed' : 99,
+                'reg_lambda': 15,#
                 }
         params = ML.makeparams(params)
         gridsearchcv_lgbm("lightgbm2", cv=cv, params=params, eval_func=EV.gini)
     elif mode == "Building...":
         param = {
                 'learning_rate' : 0.02,
-                'n_estimators' : 1090,
+                'n_estimators' : 1100,
                 'subsample' : 0.7,
-                'subsample_freq' : 2,
-                'num_leaves' : 16,
+                'subsample_freq' : 1,
+                'num_leaves' : 18,
                 'seed' : 99,
+                'reg_lambda': 15,
                 }
         test = ML.loadtest(path)
         metacv_lgbm("lightgbm2", cv=cv, test=test, param = param, eval_func=EV.gini)

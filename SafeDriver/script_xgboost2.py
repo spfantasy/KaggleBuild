@@ -32,7 +32,7 @@ def metacv_xgb(train, valid, test, param):
             ,model.predict(xgb.DMatrix(test.X), ntree_limit=model.best_ntree_limit+45))
 
 @ML.gridsearchcv
-def gridsearchcv_lgbm(train, valid, param):
+def gridsearchcv_xgb(train, valid, param):
     watchlist = [(xgb.DMatrix(train.X, train.y), 'train'), 
                 (xgb.DMatrix(valid.X, valid.y), 'valid')]
     model = xgb.train(param, 
@@ -46,20 +46,20 @@ def gridsearchcv_lgbm(train, valid, param):
     return model.predict(xgb.DMatrix(valid.X), ntree_limit=model.best_ntree_limit+45)   
 
 if __name__ == "__main__":
-    mode = "Building..."
+    mode = "Grid Searching..."#"Building..."#
     
     print('['+sys.argv[0].split('/')[-1]+']'+mode)
     path = "./cv/cv_"
     cv = ML.loadcv(path)
     if mode == "Grid Searching...":
-        param = {
+        params = {
             'objective': 'binary:logistic',
             'eval_metric': 'logloss',
             'eta': 0.04,
-            'max_depth': 5,
-            'min_child_weight': 9.15,
-            'gamma': 0.59,
-            'subsample': 0.8,
+            'max_depth': [3,5,7],
+            'min_child_weight': [8,9.15,10],
+            'gamma': [0.3,0.59,0.7],
+            'subsample': [.7,0.8,.9],
             'colsample_bytree': 0.8,
             'alpha': 10.4,
             'lambda': 5,
