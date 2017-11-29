@@ -46,7 +46,7 @@ def gridsearchcv_xgb(train, valid, param):
     return model.predict(xgb.DMatrix(valid.X), ntree_limit=model.best_ntree_limit+45)   
 
 if __name__ == "__main__":
-    mode = "Grid Searching..."#"Building..."#
+    mode = "Building..."#"Grid Searching..."#
     
     print('['+sys.argv[0].split('/')[-1]+']'+mode)
     path = "./cv/cv_"
@@ -65,7 +65,8 @@ if __name__ == "__main__":
             'lambda': 5,
             'seed': 2017,
             'nthread': 5,
-            'silent': 1,
+            'silent': True,
+            'scale_pos_weight':1.6,
         }
         params = ML.makeparams(params)
         gridsearchcv_xgb("xgboost2", cv=cv, params=params, eval_func=EV.gini)
@@ -83,9 +84,10 @@ if __name__ == "__main__":
             'lambda': 5,
             'seed': 2017,
             'nthread': 5,
-            'silent': 1,
+            'silent': True,
+            'scale_pos_weight':1.6,
         }
         test = ML.loadtest(path)
         metacv_xgb("xgboost2", cv = cv, test = test, param = param, eval_func = EV.gini)
     else:
-        print("Wrong command")
+        print("Wrong command")#0.2900

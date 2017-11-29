@@ -59,7 +59,8 @@ if __name__ == "__main__":
                 'objective': 'binary:logistic', 
                 'eval_metric': 'auc', 
                 'seed': 99, 
-                'silent': True
+                'silent': True,
+                'scale_pos_weight':1.6,
                }    
         params = ML.makeparams(params)
         gridsearchcv_xgb("xgboost1", cv=cv, params=params, eval_func=EV.gini)
@@ -71,9 +72,10 @@ if __name__ == "__main__":
                 'objective': 'binary:logistic', 
                 'eval_metric': 'auc', 
                 'seed': 99, 
-                'silent': True
+                'silent': True,
+                'scale_pos_weight':1.6,
                }  
         test = ML.loadtest(path)
         metacv_xgb("xgboost1", cv = cv, test = test, param = param, eval_func = EV.gini)
     else:
-        print("Wrong command")
+        print("Wrong command")#0.2886

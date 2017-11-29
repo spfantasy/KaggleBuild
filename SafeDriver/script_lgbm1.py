@@ -16,6 +16,11 @@ from lightgbm import LGBMClassifier as LGBM
 @ML.metacv
 def metacv_lgbm(train, valid, test, param):
     model = LGBM(**param)
+    # #setup weights
+    # weights = np.zeros(len(train.y))
+    # weights[train.y == 0] = 1
+    # weights[train.y == 1] = 1.6
+    # #
     model.fit(train.X, train.y)
     return (model.predict_proba(valid.X)[:,1]
             ,model.predict_proba(test.X)[:,1])
@@ -27,7 +32,7 @@ def gridsearchcv_lgbm(train, valid, param):
     return model.predict_proba(valid.X)[:,1]
 
 if __name__ == "__main__":
-    mode = "Grid Searching..."#"Building..."#
+    mode = "Building..."#"Grid Searching..."#
     
     print('['+sys.argv[0].split('/')[-1]+']'+mode)
     path = "./cv/cv_"
@@ -42,6 +47,7 @@ if __name__ == "__main__":
             'colsample_bytree' : 0.8,#
             'min_child_samples' : 700,
             'seed' : 99,
+            'scale_pos_weight': 1.6,
             }
         params = ML.makeparams(params)
         gridsearchcv_lgbm("lightgbm1", cv=cv, params=params, eval_func=EV.gini)
@@ -55,8 +61,10 @@ if __name__ == "__main__":
             'colsample_bytree' : 0.8,
             'min_child_samples' : 700,
             'seed' : 99,
+            'scale_pos_weight': 1.6,
             }
         test = ML.loadtest(path)
         metacv_lgbm("lightgbm1", cv=cv, test=test, param = param, eval_func=EV.gini)
     else:
         print("Wrong command")
+        #None     2891     

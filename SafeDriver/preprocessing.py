@@ -46,7 +46,7 @@ class Preprocessing(object):
         return df
 
     @staticmethod
-    def fillNA(df, param={'method': 'mean-1'}):
+    def fillNA(df, param={'method': 'groupmean-1'}):
         if param['method'] == 'fill-1':
             df = df.fillna(-1)
             return df, param
@@ -70,6 +70,32 @@ class Preprocessing(object):
                 param['mean'] = df.mean()
             df = df.fillna(param['mean'])
             return df, param
+        elif param['method'] == 'groupmean-1':
+            #fill catagory and binary with -1
+            #fill other with mean(after grouping using the highest ranked catagory)
+            group_criteria = ["ps_ind_05_cat",  #3rd     3classes
+                                # "ps_car_01_cat",#9th    13classes       
+                                # "ps_car_07_cat",#10th    3classes
+                                "ps_ind_17_bin",#11th    2classes
+                                # "ps_car_03_cat",#12th    3classes
+                                ]
+            for col in df.columns:
+                if col.endswith('cat') or col.endswith('bin'):
+                    df[col] = df[col].fillna(-1)
+            if 'mean' not in param:
+                param['mean_bak'] = df.mean()
+                param['mean'] = df.groupby(group_criteria).mean()    
+            new_df = []
+            for possible_val, group in df.groupby(group_criteria):
+                try:#possible that catagory not appeared
+                    new_df.append(group.fillna(param['mean'].loc[possible_val]))
+                except:
+                    pass
+            df = pd.concat(new_df, axis = 0).sort_index()
+            #in case if there's empty catagory
+            df = df.fillna(param['mean_bak'])
+            return df, param
+            
         else:
             raise KeyError("wrong method provided")
 
@@ -77,7 +103,7 @@ class Preprocessing(object):
     def encoding(Dset, encoding_lst, keep_original = False,
                 param = {'min_samples_leaf' : 200,
                         'smoothing' : 10,
-                        'noise_level' : 0}):
+                        'noise_level' : 1e-2}):
         """
         implementation of Empirical Bayesian Encoding
         https://kaggle2.blob.core.windows.net/forum-message-attachments/225952/7441/high%20cardinality%20categoricals.pdf
@@ -85,6 +111,7 @@ class Preprocessing(object):
         """
         def add_noise(series, noise_level):
             return series * (1 + noise_level * np.random.randn(len(series)))
+
         if 'average' not in param or 'prior' not in param:
             target = Dset.y
             if isinstance(target, pd.core.frame.DataFrame):
@@ -107,6 +134,9 @@ class Preprocessing(object):
                 averages[param['target_name']] = param['prior'] * (1 - smoothing) + averages["mean"] * smoothing
                 averages.drop(["mean", "count"], axis=1, inplace=True)
                 param['average'][col] = averages
+        else:
+            param['noise_level'] = 0
+
         for col in encoding_lst:
             selected_series = Dset.X[col]
             # Apply averages to series

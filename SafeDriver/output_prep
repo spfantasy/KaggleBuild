@@ -1,0 +1,19 @@
+loading data to memory...
+preprocessing on whole training/testing set
+saving ./cv/cv_train_X.csv (595212 row * 71 col)
+saving ./cv/cv_test_X.csv (892816 row * 71 col)
+preprocessing on cv #0
+saving ./cv/cv_train_X_0.csv (476169 row * 71 col)
+saving ./cv/cv_valid_X_0.csv (119043 row * 71 col)
+preprocessing on cv #1
+saving ./cv/cv_train_X_1.csv (476169 row * 71 col)
+saving ./cv/cv_valid_X_1.csv (119043 row * 71 col)
+preprocessing on cv #2
+saving ./cv/cv_train_X_2.csv (476169 row * 71 col)
+saving ./cv/cv_valid_X_2.csv (119043 row * 71 col)
+preprocessing on cv #3
+saving ./cv/cv_train_X_3.csv (476170 row * 71 col)
+saving ./cv/cv_valid_X_3.csv (119042 row * 71 col)
+preprocessing on cv #4
+saving ./cv/cv_train_X_4.csv (476171 row * 71 col)
+saving ./cv/cv_valid_X_4.csv (119041 row * 71 col)

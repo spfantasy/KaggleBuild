@@ -81,7 +81,7 @@ def PreprocessOriginalData(train, test, filename):
     test.X, _ = PP.fillNA(test.X, NAmethod)
     # Empirical Bayesian Encoding
     encoding_lst = [col for col in train.X.columns if col.endswith('cat') 
-                    and len(pd.concat([train.X, test.X])[col].unique()) >= 10]
+                    and len(pd.concat([train.X, test.X])[col].unique()) >= 13]
     train.X, Encodingmethod = PP.encoding(train, encoding_lst)
     test.X, _ = PP.encoding(test, encoding_lst, param = Encodingmethod)
     if True:

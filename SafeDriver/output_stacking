@@ -3,15 +3,3 @@ cross validation set 2 loaded
 cross validation set 3 loaded
 cross validation set 4 loaded
 cross validation set 5 loaded
-Traceback (most recent call last):
-  File "script_stacking.py", line 45, in <module>
-    ML.stacking(train, test, LR())
-  File "/home/shihao/KaggleBuild/SafeDriver/modeling.py", line 146, in stacking
-    model.fit(train.X, train.y)
-  File "/usr/local/lib/python2.7/dist-packages/sklearn/linear_model/logistic.py", line 1216, in fit
-    order="C")
-  File "/usr/local/lib/python2.7/dist-packages/sklearn/utils/validation.py", line 579, in check_X_y
-    _assert_all_finite(y)
-  File "/usr/local/lib/python2.7/dist-packages/sklearn/utils/validation.py", line 44, in _assert_all_finite
-    " or a value too large for %r." % X.dtype)
-ValueError: Input contains NaN, infinity or a value too large for dtype('float64').
