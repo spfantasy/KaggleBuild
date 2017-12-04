@@ -33,12 +33,12 @@ if __name__ == "__main__":
     path = "./cv/cv_"
     cv = ML.loadcv(path)
     if mode == "Grid Searching...":
-        params = {'n_estimators': [200,250,300],
+        params = {'n_estimators': [200, 250, 300],
                   'criterion': 'gini',
                   'max_features': 'log2',
-                  'max_depth': 9,#[6,9,15],
-                  'min_samples_split': 75,#[60,75,100],
-                  'min_samples_leaf': 21,#[15,21,35],
+                  'max_depth': 9,  # [6,9,15],
+                  'min_samples_split': 75,  # [60,75,100],
+                  'min_samples_leaf': 21,  # [15,21,35],
                   'n_jobs': -1,
                   'bootstrap': True,
                   'oob_score': True,

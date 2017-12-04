@@ -15,10 +15,11 @@ from preprocessing import Preprocessing as PP
 def firststeps(df, param = None):
     def addcolumns(df):
         # df['ps_c13*ps_r03'] = df['ps_car_13'] * df['ps_reg_03']
-        # df['missing_vals'] = np.sum((df==np.nan).values, axis=1)
+        # df['ps_r02*ps_r03'] = df['ps_reg_02'] * df['ps_reg_03']
+        # df['ps_c12*ps_r13'] = df['ps_car_12'] * df['ps_car_13']
+        # df['ps_c13*ps_c15'] = df['ps_car_13'] * df['ps_car_15']
 
-        # df['ps_car_13_sq2'] = df['ps_car_13'] * df['ps_car_13']
-        # df['ps_reg_03_sq2'] = df['ps_reg_03'] * df['ps_reg_03']
+        # df['missing_vals'] = np.sum((df==np.nan).values, axis=1)
         return df
     def selectfeatures(df):
         #feature shadowing from Oliver

@@ -54,7 +54,8 @@ class Modeling(object):
             cvresult = []
             cvlabels = []
             for i, data in enumerate(cv):
-                print("training CV round %d[%s]" % ((i + 1),time.asctime( time.localtime(time.time()))))
+                print("training CV round %d[%s]" % (
+                    (i + 1), time.asctime(time.localtime(time.time()))))
                 # core wrapped
                 v, t = func(data[0], data[1], test, param)
                 cvresult.append(v)
@@ -76,7 +77,7 @@ class Modeling(object):
             score = eval_func(stage1labels['target'].as_matrix(),
                               stage1result['target'].as_matrix())
             print("[metacv@%s] cross validation score = %.4f[%s]" %
-                  (methodname, score, time.asctime( time.localtime(time.time()))))
+                  (methodname, score, time.asctime(time.localtime(time.time()))))
 
         return wrapper
 
@@ -86,7 +87,8 @@ class Modeling(object):
         def wrapper(methodname, cv, params, eval_func):
             scores = []
             for idx, param in enumerate(params):
-                print("testing parameter case %d/%d[%s]" % (idx + 1, len(params), time.asctime( time.localtime(time.time()))))
+                print("testing parameter case %d/%d[%s]" % (idx + 1, len(
+                    params), time.asctime(time.localtime(time.time()))))
                 cvresult = []
                 cvlabels = []
                 for i, data in enumerate(cv):
@@ -109,7 +111,7 @@ class Modeling(object):
                 print("\t'%s' : %s," % (key, str(val)))
             print('}')
             print("[gridsearchcv@%s] best cv score = %.4f[%s]" %
-                  (methodname, scores[bestidx] ,time.asctime( time.localtime(time.time()))))
+                  (methodname, scores[bestidx], time.asctime(time.localtime(time.time()))))
         return wrapper
 
     @staticmethod
@@ -146,4 +148,4 @@ class Modeling(object):
         model.fit(train.X, train.y)
         test.y['target'] = model.predict_proba(test.X)[:, 1]
         test.y.to_csv('./predictions/submission.csv',
-                    index=False, float_format='%.5f')
+                      index=False, float_format='%.5f')
