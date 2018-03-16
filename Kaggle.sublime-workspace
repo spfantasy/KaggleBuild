@@ -1,0 +1,789 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"lo",
+				"long_time_task\tfunction"
+			],
+			[
+				"re",
+				"responses\tstatement"
+			],
+			[
+				"tim",
+				"time\tmodule"
+			],
+			[
+				"thre",
+				"threads\tstatement"
+			],
+			[
+				"thr",
+				"threads\tstatement"
+			],
+			[
+				"all",
+				"allow_redirects"
+			],
+			[
+				"time",
+				"timeout"
+			],
+			[
+				"http",
+				"http_re"
+			],
+			[
+				"fin",
+				"finditer\tfunction"
+			],
+			[
+				"l",
+				"links"
+			],
+			[
+				"hat",
+				"httpaddr\tparam"
+			],
+			[
+				"Q",
+				"Queue\tclass"
+			],
+			[
+				"q",
+				"Queue\tclass"
+			],
+			[
+				"arg",
+				"arglist\tstatement"
+			],
+			[
+				"print",
+				"print_function\tstatement"
+			],
+			[
+				"dis",
+				"displayable"
+			],
+			[
+				"viw",
+				"viewer"
+			],
+			[
+				"vi",
+				"viewer\tparam"
+			],
+			[
+				"Vi",
+				"ViewInfo\tclass"
+			],
+			[
+				"disp",
+				"display"
+			],
+			[
+				"pairs",
+				"pairs_lst\tstatement"
+			],
+			[
+				"chi",
+				"child\tstatement"
+			],
+			[
+				"TreeNod",
+				"TreeNodeMap\tstatement"
+			],
+			[
+				"Tree",
+				"TreeRootGen\tfunction"
+			],
+			[
+				"roo",
+				"roots\tstatement"
+			],
+			[
+				"error",
+				"error_code\tstatement"
+			],
+			[
+				"erro",
+				"error_code\tstatement"
+			],
+			[
+				"chil",
+				"childs"
+			],
+			[
+				"Tre",
+				"TreeNodeMap\tstatement"
+			],
+			[
+				"TreeN",
+				"TreeNodeSet\tstatement"
+			],
+			[
+				"isb",
+				"_isbn"
+			],
+			[
+				"te",
+				"temporaryRational"
+			],
+			[
+				"size",
+				"size_t"
+			],
+			[
+				"si",
+				"size_t"
+			],
+			[
+				"age",
+				"age18"
+			],
+			[
+				"bu",
+				"buildings\tparam"
+			],
+			[
+				"st",
+				"studentone\tstatement"
+			],
+			[
+				"co",
+				"counter\tstatement"
+			],
+			[
+				"Ques",
+				"QuestionAdmin\tclass"
+			],
+			[
+				"ass",
+				"assertContains"
+			],
+			[
+				"res",
+				"response"
+			],
+			[
+				"sta",
+				"status_code"
+			],
+			[
+				"rep",
+				"response\tstatement"
+			],
+			[
+				"cl",
+				"client"
+			],
+			[
+				"Futrue",
+				"future_question"
+			],
+			[
+				"pub",
+				"pub_date__lte"
+			],
+			[
+				"question",
+				"question_text\tparam"
+			],
+			[
+				"creat",
+				"create_question\tfunction"
+			],
+			[
+				"la",
+				"latest_question_list"
+			],
+			[
+				"assert",
+				"assertQuerysetEqual"
+			],
+			[
+				"context",
+				"context_object_name"
+			],
+			[
+				"listv",
+				"listview\tListView"
+			],
+			[
+				"t",
+				"timedelta\tclass"
+			],
+			[
+				"tzn",
+				"timezone"
+			],
+			[
+				"timzo",
+				"timezone"
+			],
+			[
+				"Htt",
+				"HttpResponseRedirect"
+			],
+			[
+				"sele",
+				"selected_choice\tstatement"
+			],
+			[
+				"get",
+				"get_object_or_404\tmodule"
+			],
+			[
+				"ques",
+				"question_id"
+			],
+			[
+				"que",
+				"question_text"
+			],
+			[
+				"max",
+				"max_length"
+			],
+			[
+				"pst",
+				"post_detail"
+			],
+			[
+				"Publi",
+				"PublishedManager\tclass"
+			],
+			[
+				"Stat",
+				"STATUS_CHOICE\tstatement"
+			],
+			[
+				"meta_t",
+				"meta_test_path\tstatement"
+			],
+			[
+				"stag",
+				"stage1result\tstatement"
+			],
+			[
+				"meta_tra",
+				"meta_train_y\tstatement"
+			],
+			[
+				"mt",
+				"meta_train_y\tstatement"
+			],
+			[
+				"met",
+				"meta_test\tstatement"
+			],
+			[
+				"meat",
+				"meta_train\tstatement"
+			],
+			[
+				"p",
+				"push_back"
+			],
+			[
+				"para",
+				"params\tparam"
+			],
+			[
+				"me",
+				"methodname"
+			],
+			[
+				"as",
+				"as_matrix"
+			],
+			[
+				"valida",
+				"validation_split"
+			],
+			[
+				"val",
+				"validation_split"
+			],
+			[
+				"ig",
+				"ignore_index\tparam"
+			],
+			[
+				"raw",
+				"raw_input\tfunction"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Anaconda Python Builder",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Anaconda Python Builder",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Anaconda Python Builder",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				]
+			],
+			[
+				"Anaconda Python Builder",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/User/C11.sublime-build",
+					""
+				],
+				[
+					"Packages/User/C11.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/Java/Ant.sublime-build",
+					""
+				],
+				[
+					"Packages/Java/JavaC.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/Java/JavaC.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Java/Ant.sublime-build",
+					""
+				],
+				[
+					"Packages/Java/JavaC.sublime-build",
+					""
+				],
+				[
+					"Packages/Java/JavaC.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/Java/JavaC.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 375.0,
+		"last_filter": "repl",
+		"selected_items":
+		[
+			[
+				"repl",
+				"SublimeREPL: Python"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"prv",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"brows",
+				"Preferences: Browse Packages"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"pacakgere",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"PRV",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"settings",
+				"Preferences: Package Control Settings – Default"
+			]
+		],
+		"width": 544.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/shihaoli/myfile/project/KaggleBuild",
+		"/Users/shihaoli/myfile/project/KaggleBuild/SafeDriver"
+	],
+	"file_history":
+	[
+		"/Users/shihaoli/myfile/project/KaggleBuild/SafeDriver/StackedDAE.py",
+		"/Users/shihaoli/myfile/project/KaggleBuild/SafeDriver/test_StackedDAE.py",
+		"/Users/shihaoli/myfile/project/KaggleBuild/Kaggle.sublime-project",
+		"/Users/shihaoli/myfile/project/KaggleBuild/SafeDriver/preprocessing.py",
+		"/Users/shihaoli/myfile/project/KaggleBuild/SafeDriver/script_preprocessing.py",
+		"/Users/shihaoli/myfile/Courses/USC/EE569/HW4/submission/EE569_hw4_4920801202_Li/Designed_20170418_fin.py",
+		"/Users/shihaoli/myfile/project/DAE/util/DenoisedAutoEncoder.py",
+		"/Users/shihaoli/myfile/project/spider/python/failing_test_2.py",
+		"/Users/shihaoli/myfile/project/spider/python/webcrawler.py",
+		"/Users/shihaoli/myfile/project/spider/python/failing_test_1.py",
+		"/Users/shihaoli/myfile/project/spider/36.py",
+		"/Users/shihaoli/myfile/project/spider/multithread_basic.py",
+		"/Users/shihaoli/myfile/project/spider/404finder.py",
+		"/Users/shihaoli/Library/Application Support/Sublime Text 3/Packages/SublimeREPL/config/Python/Main.sublime-menu",
+		"/Users/shihaoli/Library/Application Support/Sublime Text 3/Packages/SublimeREPL/SublimeREPL.sublime-settings",
+		"/Users/shihaoli/Library/Application Support/Sublime Text 3/Packages/User/SublimeREPL.sublime-settings",
+		"/Users/shihaoli/myfile/project/spider/pyspider.sublime-project",
+		"/Users/shihaoli/Library/Application Support/Sublime Text 3/Packages/User/Anaconda.sublime-settings",
+		"/Users/shihaoli/Library/Application Support/Sublime Text 3/Packages/Python/Python.sublime-build",
+		"/Users/shihaoli/myfile/project/OW/instruction/比赛数据字段的重要性分析",
+		"/Users/shihaoli/myfile/project/spider/pyspider.sublime-workspace",
+		"/Users/shihaoli/myfile/project/404finder/spider.py",
+		"/Users/shihaoli/myfile/project/404finder/untitled.sublime-project",
+		"/Users/shihaoli/myfile/project/LeetCode/OOP/Minesweeper.py",
+		"/Users/shihaoli/myfile/project/LeetCode/10_Regular_Expression_Matching/10.py",
+		"/Users/shihaoli/myfile/project/LeetCode/10_Regular_Expression_Matching",
+		"/Users/shihaoli/myfile/project/LeetCode/OA/20180109.py",
+		"/Users/shihaoli/Desktop/drawbridge",
+		"/Users/shihaoli/myfile/project/LeetCode/697_Degree_of_an_Array/697.py",
+		"/Users/shihaoli/myfile/project/LeetCode/4_Median_of_Two_Sorted_Arrays/4.py",
+		"/Users/shihaoli/myfile/project/LeetCode/334_Increasing_Triplet_Subsequence/334.py",
+		"/Users/shihaoli/myfile/project/LeetCode/300_Longest_Increasing_Subsequence/300.cpp",
+		"/Users/shihaoli/myfile/project/LeetCode/324_Wiggle_Sort_II/324.cpp",
+		"/Users/shihaoli/Desktop/Akuna.txt",
+		"/Users/shihaoli/myfile/project/LeetCode/236_Lowest_Common_Ancestor_of_a_Binary_Tree/236.py",
+		"/Users/shihaoli/myfile/project/LeetCode/535_Encode_and_Decode_TinyURL/535.py",
+		"/Users/shihaoli/myfile/project/LeetCode/268_Missing_Number/268.cpp",
+		"/Users/shihaoli/myfile/project/LeetCode/283_Move_Zeros/283.cpp",
+		"/Users/shihaoli/myfile/project/LeetCode/678_Valid_Parenthesis_String/678.py",
+		"/Users/shihaoli/myfile/project/LeetCode/300_Longest_Increasing_Subsequence/300.py",
+		"/Users/shihaoli/myfile/project/LeetCode/.gitignore",
+		"/Users/shihaoli/myfile/project/LeetCode/380_Insert_Delete_GetRandom_O(1)/380.py",
+		"/Users/shihaoli/myfile/project/LeetCode/395_Longest_Substring_with_At_Least_K_Repeating_Characters/395.py",
+		"/Users/shihaoli/myfile/project/DAE/DenoisedAutoEncoder.sublime-project",
+		"/Users/shihaoli/Library/Application Support/Sublime Text 3/Packages/Anaconda/Default (OSX).sublime-keymap",
+		"/Users/shihaoli/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/shihaoli/Library/Application Support/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
+		"/Users/shihaoli/myfile/project/DAE/DenoisedAutoEncoder.py",
+		"/Users/shihaoli/Library/Application Support/Sublime Text 3/Packages/User/Python (Django).sublime-settings",
+		"/Users/shihaoli/Library/Application Support/Sublime Text 3/Packages/Djaneiro/Settings/Python (Django).sublime-settings",
+		"/Users/shihaoli/Library/Application Support/Sublime Text 3/Packages/User/Plain text.sublime-settings",
+		"/Users/shihaoli/myfile/project/DAE/dae_keras.py",
+		"/Users/shihaoli/myfile/project/LeetCode/253_Meeting_Rooms_II/253.py",
+		"/Users/shihaoli/myfile/project/LeetCode/253_Meeting_Rooms_II/253.cpp",
+		"/Users/shihaoli/myfile/project/KaggleBuild/SafeDriver/script.sh",
+		"/Users/shihaoli/myfile/project/KaggleBuild/SafeDriver/script_RandomForest.py",
+		"/Users/shihaoli/myfile/project/KaggleBuild/SafeDriver/script_xgboost1.py",
+		"/Users/shihaoli/myfile/project/KaggleBuild/SafeDriver/script_xgboost2.py",
+		"/Users/shihaoli/myfile/project/KaggleBuild/SafeDriver/script_stacking.py",
+		"/Users/shihaoli/myfile/project/KaggleBuild/SafeDriver/script_lgbm2.py",
+		"/Users/shihaoli/myfile/project/KaggleBuild/SafeDriver/script_lgbm1.py",
+		"/Users/shihaoli/myfile/project/KaggleBuild/SafeDriver/modeling.py",
+		"/Users/shihaoli/myfile/project/KaggleBuild/SafeDriver/evaluation.py",
+		"/Users/shihaoli/myfile/project/LeetCode/234_Palindrome_Linked_List/234.cpp",
+		"/Users/shihaoli/myfile/project/test.cpp",
+		"/Users/shihaoli/myfile/project/LeetCode/OOP/Inheritence.cpp",
+		"/Users/shihaoli/myfile/project/LeetCode/229_Majority_Element_II/229.cpp",
+		"/Users/shihaoli/myfile/project/LeetCode/222_Count_Complete_Tree_Nodes/222.cpp",
+		"/Users/shihaoli/myfile/project/LeetCode/OOP/mystring.cpp",
+		"/Users/shihaoli/myfile/project/LeetCode/OOP/mystring_ptr.cpp",
+		"/Users/shihaoli/Library/Application Support/Sublime Text 3/Packages/C++/C++ Single File.sublime-build",
+		"/Users/shihaoli/myfile/project/LeetCode/221_Maximal_Square/221.cpp",
+		"/Users/shihaoli/myfile/project/LeetCode/OOP/Rational.cpp",
+		"/Users/shihaoli/myfile/project/LeetCode/OOP/Rreference.cpp",
+		"/Users/shihaoli/myfile/project/htmlclass/Part6_Forms_Selections.html",
+		"/Users/shihaoli/myfile/project/htmlclass/basic.html",
+		"/Users/shihaoli/myfile/project/LeetCode/220_Contain_Duplicate_III/220.py",
+		"/Users/shihaoli/myfile/project/htmlclass/newpage.html",
+		"/Users/shihaoli/myfile/project/LeetCode/218_The_Skyline_Problem/218.py",
+		"/Users/shihaoli/myfile/project/LeetCode/218_The_Skyline_Problem/218.cpp",
+		"/Users/shihaoli/myfile/project/mysite/templates/admin/base_site.html",
+		"/Users/shihaoli/myfile/project/LeetCode/216_Combination_Sum_III/216.cpp",
+		"/Users/shihaoli/myfile/project/LeetCode/216_Combination_Sum_III/216.py",
+		"/Users/shihaoli/Library/Application Support/Sublime Text 3/Packages/Java/JavaC.sublime-build",
+		"/Users/shihaoli/myfile/project/mysite/polls/tests.py",
+		"/Users/shihaoli/myfile/project/mysite/polls/models.py",
+		"/Users/shihaoli/myfile/project/mysite/polls/views.py",
+		"/Users/shihaoli/myfile/project/mysite/polls/static/polls/style.css",
+		"/Users/shihaoli/myfile/project/mysite/polls/templates/polls/index.html",
+		"/Users/shihaoli/myfile/project/mysite/polls/admin.py",
+		"/Users/shihaoli/myfile/project/mysite/mysite/settings.py",
+		"/Users/shihaoli/myfile/project/mysite/polls/templates/polls/detail.html",
+		"/Users/shihaoli/myfile/project/mysite/polls/templates/polls/results.html",
+		"/Users/shihaoli/myfile/project/mysite/polls/urls.py",
+		"/Users/shihaoli/myfile/Courses/USC/EE588/assignment/HW5/1/spectrum_data.m",
+		"/Users/shihaoli/myfile/Courses/USC/EE588/assignment/HW5/3/sep3way_data.m",
+		"/Users/shihaoli/myfile/Courses/USC/EE588/assignment/HW5/2/nonlin_meas_data.m",
+		"/Users/shihaoli/myfile/Courses/USC/EE660/Assignment/jupyter/HW12.tex",
+		"/Users/shihaoli/Downloads/HW12/HW12.tex",
+		"/Users/shihaoli/myfile/project/mysite/mysite/urls.py",
+		"/Users/shihaoli/myfile/project/mysite/blog/admin.py",
+		"/Users/shihaoli/myfile/project/mysite/blog/models.py",
+		"/Users/shihaoli/myfile/project/mysite/blog/views.py",
+		"/Users/shihaoli/myfile/project/mysite/blog/url.py",
+		"/Users/shihaoli/myfile/Courses/USC/EE588/HW4/cens_fit_data.m",
+		"/Users/shihaoli/myfile/project/test.py",
+		"/Users/shihaoli/myfile/note.py",
+		"/Users/shihaoli/myfile/note",
+		"/Users/shihaoli/Desktop/passSolution.py",
+		"/Users/shihaoli/Desktop/passSolution-1.py",
+		"/Users/shihaoli/myfile/project/LeetCode/200_Number_of_Islands/200.cpp",
+		"/Users/shihaoli/myfile/project/LeetCode/190_Reverse_Bits/190.cpp",
+		"/Users/shihaoli/myfile/project/LeetCode/190_Reverse_Bits/190.py",
+		"/Users/shihaoli/Library/Application Support/Sublime Text 3/Packages/User/C11.sublime-build",
+		"/Users/shihaoli/Library/Application Support/Sublime Text 3/Packages/ClangAutoComplete/ClangAutoComplete.sublime-settings",
+		"/Users/shihaoli/Library/Application Support/Sublime Text 3/Packages/Themr/ThemrFavorites.sublime-settings",
+		"/Users/shihaoli/Library/Application Support/Sublime Text 3/Packages/User/ThemrFavorites.sublime-settings",
+		"/Users/shihaoli/Library/Application Support/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/Users/shihaoli/Downloads/Miniconda2-latest-MacOSX-x86_64.sh"
+	],
+	"find":
+	{
+		"height": 43.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"evaluating"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 32.0
+	},
+	"input":
+	{
+		"height": 42.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 180.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.help":
+	{
+		"height": 156.0
+	},
+	"pinned_build_system": "",
+	"project": "Kaggle.sublime-project",
+	"replace":
+	{
+		"height": 60.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/myfile/project/spider/pyspider.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 156.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
